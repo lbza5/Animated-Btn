@@ -1,0 +1,175 @@
+:root {
+  --button-color: #6c5ce7;
+  --button-hover: #8075e9;
+  --shadow-color: #4834d4;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f0f2f5;
+}
+
+.cartoon-button {
+  position: relative;
+  padding: 15px 35px;
+  font-size: 20px;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: none;
+  background: var(--button-color);
+  color: white;
+  border-radius: 12px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: all 0.2s ease;
+  box-shadow: 0 6px 0 var(--shadow-color),
+              0 8px 15px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.button-text {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+}
+
+/* Improved floating text animation */
+.button-text {
+  animation: textFloat 3s ease-in-out infinite;
+}
+
+@keyframes textFloat {
+  0%, 100% {
+    transform: translateY(-2px) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(2px) rotate(1deg);
+  }
+}
+
+/* Enhanced rainbow glow effect on hover */
+.cartoon-button:hover .button-text {
+  animation: enhancedRainbow 2s linear infinite;
+}
+
+@keyframes enhancedRainbow {
+  0% { 
+    text-shadow: 0 0 10px rgba(255,255,255,0.8), 
+                 0 0 20px #2ccae680,
+                 0 0 30px #3a7dbd6e; 
+  }
+  25% { 
+    text-shadow: 0 0 10px rgba(255,255,255,0.8), 
+                 0 0 20px rgba(0, 255, 221, 0.5),
+                 0 0 30px rgba(162, 0, 255, 0.3); 
+  }
+  50% { 
+    text-shadow: 0 0 10px rgba(255,255,255,0.8), 
+                 0 0 20px rgba(0,255,0,0.5),
+                 0 0 30px rgba(0,255,0,0.3); 
+  }
+  75% { 
+    text-shadow: 0 0 10px rgba(255,255,255,0.8), 
+                 0 0 20px rgba(0,0,255,0.5),
+                 0 0 30px rgba(0,0,255,0.3); 
+  }
+  100% { 
+    text-shadow: 0 0 10px rgba(255,255,255,0.8), 
+                 0 0 20px rgba(160, 32, 219, 0.5),
+                 0 0 30px rgba(255, 0, 221, 0.3); 
+  }
+}
+
+/* Improved button hover effect */
+.cartoon-button:hover {
+  transform: translateY(2px) scale(1.05);
+  box-shadow: 0 4px 0 var(--shadow-color),
+              0 5px 15px rgba(0, 0, 0, 0.2);
+  background: var(--button-hover);
+}
+
+.cartoon-button:active {
+  transform: translateY(5px) scale(0.95);
+  box-shadow: 0 1px 0 var(--shadow-color),
+              0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced shine effect */
+.cartoon-button::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: rotate(45deg);
+  animation: shine 3s infinite;
+  pointer-events: none;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-200%) translateY(-200%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+/* Improved border glow */
+.cartoon-button::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    45deg,
+    #2c7df7,
+    #9900ff,
+    #40e0d0
+  );
+  background-size: 200% 200%;
+  border-radius: 14px;
+  z-index: -1;
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: borderGlow 3s linear infinite;
+}
+
+@keyframes borderGlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.cartoon-button:hover::after {
+  opacity: 0.5;
+}
+
+/* Subtle scale animation */
+@keyframes subtlePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.cartoon-button:hover {
+  animation: subtlePulse 2s ease-in-out infinite;
+}
